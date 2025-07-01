@@ -38,21 +38,6 @@ public class PropertyController {
         return ResponseEntity.created(location).body(saved);
     }
 
-   /* @PutMapping("/{id}")
-    public ResponseEntity<Property> updateProperty(@PathVariable Long id, @RequestBody Property property) {
-        return propertyService.findById(id)
-                .map(existing -> {
-                    // Actualizar campos
-                    existing.setTitle(property.getTitle());
-                    existing.setPrice(property.getPrice());
-                    existing.setLocation(property.getLocation());
-                    // ... otros campos si los tienes
-
-                    Property updated = propertyService.save(existing);
-                    return ResponseEntity.ok(updated);
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }*/
 
     @PutMapping("/{id}")
     public ResponseEntity<?> updateProperty(

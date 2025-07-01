@@ -2,6 +2,8 @@ package com.asb.housingplatform.controller;
 
 import com.asb.housingplatform.model.Property;
 import com.asb.housingplatform.service.PropertyService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -19,6 +21,9 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
+
+    @Operation(summary = "List all properties", description = "Returns a list of all registered properties")
+    @ApiResponse(responseCode = "200", description = "Property list retrieved successfully")
     @GetMapping
     public List<Property> getAllProperties() {
         return propertyService.findAll();

@@ -23,11 +23,6 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
-    @GetMapping("/")
-    public RedirectView redirectToSwagger() {
-        return new RedirectView("/swagger-ui.html");
-    }
-
     @Operation(summary = "List all properties", description = "Returns a list of all registered properties")
     @ApiResponse(responseCode = "200", description = "Property list retrieved successfully")
     @GetMapping("/all")

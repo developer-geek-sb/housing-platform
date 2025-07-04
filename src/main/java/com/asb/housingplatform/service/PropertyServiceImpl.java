@@ -1,6 +1,7 @@
 package com.asb.housingplatform.service;
 
 
+import com.asb.housingplatform.exception.ResourceNotFoundException;
 import com.asb.housingplatform.model.Property;
 import com.asb.housingplatform.repository.PropertyRepository;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,6 @@ public class PropertyServiceImpl implements  PropertyService{
 
     @Override
     public Optional<Property> findById(Long id) {
-        //return Optional.empty();
         return propertyRepository.findById(id);
     }
 
@@ -35,6 +35,10 @@ public class PropertyServiceImpl implements  PropertyService{
 
     @Override
     public void deleteById(Long id) {
+        Optional<Property> property = propertyRepository.findById(id);
+        if (property.isEmpty()) {
+            throw new ResourceNotFoundException("Property with ID " + id + " not found");
+        }
         propertyRepository.deleteById(id);
     }
 }

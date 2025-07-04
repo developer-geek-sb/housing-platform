@@ -9,6 +9,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.net.URI;
 import java.util.List;
@@ -22,6 +23,10 @@ public class PropertyController {
         this.propertyService = propertyService;
     }
 
+    @GetMapping("/")
+    public RedirectView redirectToSwagger() {
+        return new RedirectView("/swagger-ui.html");
+    }
 
     @Operation(summary = "List all properties", description = "Returns a list of all registered properties")
     @ApiResponse(responseCode = "200", description = "Property list retrieved successfully")

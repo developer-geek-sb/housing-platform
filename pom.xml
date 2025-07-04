@@ -9,6 +9,7 @@
 	<groupId>com.asb</groupId>
 	<artifactId>housing-platform</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
 	<name>ASB Housing Platform</name>
 	<description>Demo project for Spring Boot Housing Platform</description>
 	<url/>

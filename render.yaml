@@ -1,6 +1,7 @@
 services:
   - type: web
-    name: housing-platform app
+    name: housing-platform-app
     plan: free
     buildCommand: mvn clean install
     startCommand: java -jar target/housing-platform.jar
+

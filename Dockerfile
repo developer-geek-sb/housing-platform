@@ -13,4 +13,4 @@ RUN apt-get update && \
     mvn clean install
 
 # Run the application
-CMD ["java", "-jar", "target/housing-platform.jar"]
+CMD ["java", "-jar", "target/housing-platform-0.0.1-SNAPSHOT.jar"]

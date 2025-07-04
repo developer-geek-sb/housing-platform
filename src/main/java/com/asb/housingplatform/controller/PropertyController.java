@@ -30,7 +30,7 @@ public class PropertyController {
 
     @Operation(summary = "List all properties", description = "Returns a list of all registered properties")
     @ApiResponse(responseCode = "200", description = "Property list retrieved successfully")
-    @GetMapping
+    @GetMapping("/all")
     public List<Property> getAllProperties() {
         return propertyService.findAll();
     }

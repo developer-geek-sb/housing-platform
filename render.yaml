@@ -2,5 +2,5 @@ services:
   - type: web
     name: housing-platform-app
     plan: free
-    buildCommand: mvn clean install
-    startCommand: java -jar target/housing-platform.jar
+    runtime: docker
+    repo: https://github.com/developer-geek-sb/housing-platform

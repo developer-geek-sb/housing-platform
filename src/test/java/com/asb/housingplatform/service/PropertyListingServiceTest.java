@@ -1,40 +1,42 @@
 package com.asb.housingplatform.service;
 
 
-import com.asb.housingplatform.model.Property;
-import com.asb.housingplatform.repository.PropertyRepository;
+import com.asb.housingplatform.model.PropertyListing;
+import com.asb.housingplatform.repository.PropertyListingRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
-public class PropertyServiceTest {
+public class PropertyListingServiceTest {
 
     @Mock
-    private PropertyRepository propertyRepository;
+    private PropertyListingRepository propertyRepository;
 
     @InjectMocks
-    private PropertyServiceImpl propertyService;
+    private PropertyListingServiceImpl propertyService;
 
     @Test
     void shouldReturnPropertyWhenFound() {
 
         // Arrange
         Long id = 1L;
-        Property property = new Property();
+        PropertyListing property = new PropertyListing();
         property.setId(id);
         Mockito.when(propertyRepository.findById(id)).thenReturn(Optional.of(property));
 
         // Act
-        Optional<Property> result = propertyService.findById(id);
+        Optional<PropertyListing> result = propertyService.findById(id);
 
         // Assert
         assertTrue(result.isPresent());
@@ -48,7 +50,7 @@ public class PropertyServiceTest {
         Mockito.when(propertyRepository.findById(id)).thenReturn(Optional.empty());
 
         // Act
-        Optional<Property> result = propertyService.findById(id);
+        Optional<PropertyListing> result = propertyService.findById(id);
 
         // Assert
         assertTrue(result.isEmpty());

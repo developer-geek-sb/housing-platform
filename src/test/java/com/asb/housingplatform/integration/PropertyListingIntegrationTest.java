@@ -1,14 +1,15 @@
 package com.asb.housingplatform.integration;
 
 
-import com.asb.housingplatform.model.Property;
-import com.asb.housingplatform.repository.PropertyRepository;
+import com.asb.housingplatform.model.PropertyListing;
+import com.asb.housingplatform.repository.PropertyListingRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.math.BigDecimal;
@@ -20,24 +21,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class PropertyIntegrationTest {
+@ActiveProfiles("test")
+public class PropertyListingIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
-    private PropertyRepository propertyRepository;
+    private PropertyListingRepository propertyListingRepository;
 
-    private Property savedProperty;
+    private PropertyListing savedProperty;
 
     @BeforeAll
     void setup() {
-        Property property = new Property();
+        PropertyListing property = new PropertyListing();
         property.setTitle("Casa en Madrid");
         property.setPrice(BigDecimal.valueOf(2500000));
         property.setLocation("Madrid");
         property.setArea(Double.valueOf(120));
-        savedProperty = propertyRepository.save(property);
+        savedProperty = propertyListingRepository.save(property);
     }
 
     @Test

@@ -1,4 +1,4 @@
-package com.asb.housingplatform.controller;
+package com.asb.housingplatform.propertylisting.controller;
 
 
 import org.springframework.stereotype.Controller;

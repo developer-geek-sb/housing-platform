@@ -1,8 +1,9 @@
-package com.asb.housingplatform.service;
+package com.asb.housingplatform.propertylisting.service;
 
 
-import com.asb.housingplatform.model.PropertyListing;
-import com.asb.housingplatform.repository.PropertyListingRepository;
+import com.asb.housingplatform.propertylisting.model.PropertyListing;
+import com.asb.housingplatform.propertylisting.repository.PropertyListingRepository;
+import com.asb.housingplatform.propertylisting.service.PropertyListingServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

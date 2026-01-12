@@ -1,8 +1,8 @@
-package com.asb.housingplatform.integration;
+package com.asb.housingplatform.propertylisting.integration;
 
 
-import com.asb.housingplatform.model.PropertyListing;
-import com.asb.housingplatform.repository.PropertyListingRepository;
+import com.asb.housingplatform.propertylisting.model.PropertyListing;
+import com.asb.housingplatform.propertylisting.repository.PropertyListingRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

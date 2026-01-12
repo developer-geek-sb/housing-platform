@@ -1,4 +1,4 @@
-package com.asb.housingplatform;
+package com.asb.housingplatform.propertylisting;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

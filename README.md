@@ -95,3 +95,6 @@ mvn clean install
 Spin up the infrastructure:
 
 docker-compose up -d
+
+
+Run the Spring Boot application.

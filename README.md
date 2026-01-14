@@ -1,100 +1,115 @@
+# 🏠 RealEstate-Pro Connect
 
-RealEstate-Pro Connect 🏠
+**Enterprise Property Management System (Concept Phase)**
 
-Enterprise Property Management System (Concept Phase)
+RealEstate-Pro Connect es una plataforma **cloud-native** diseñada para la gestión de listados inmobiliarios, con un fuerte enfoque en **alto rendimiento**, **escalabilidad** y **patrones arquitectónicos modernos**.  
+El proyecto funciona como un **escaparate técnico** para la construcción de un backend robusto utilizando las capacidades más recientes del ecosistema Java.
 
-RealEstate-Pro Connect is a cloud-native platform designed to handle real estate listings with a focus on high performance, scalability, and modern architectural patterns. This project serves as a showcase for implementing a robust backend using the latest Java ecosystem features.
+---
 
-🚀 Current Technical Stack
+## 🚀 Stack Técnico Actual
 
-Language: Java 21 (utilizing Virtual Threads and Records).
+- **Lenguaje:** Java 21  
+  - Virtual Threads  
+  - Records
+- **Framework:** Spring Boot 3.x
+- **Arquitectura:** Arquitectura Hexagonal (Puertos y Adaptadores)
+- **Resiliencia:** Resilience4j  
+  - Circuit Breaker implementado (`appraisalCB`)
+- **Base de Datos:** PostgreSQL + Spring Data JPA
+- **Gestión de Dependencias:** Maven
+- **Contenedores:** Docker & Docker Compose
 
-Framework: Spring Boot 3.x.
+---
 
-Architecture: Hexagonal Architecture (Ports & Adapters) to ensure domain purity.
+## 🏗️ Resumen Arquitectónico
 
-Resilience: Resilience4j (Circuit Breaker implemented in appraisalCB).
+El proyecto sigue los principios de la **Arquitectura Hexagonal**, permitiendo un desacoplamiento total entre la lógica de negocio y los detalles de infraestructura:
 
-Database: PostgreSQL with Spring Data JPA.
+- **Capa de Dominio**
+  - Entidades
+  - Value Objects
+  - Servicios de dominio
+- **Capa de Aplicación**
+  - Orquestación de casos de uso
+  - Definición de puertos (interfaces)
+- **Capa de Infraestructura**
+  - Adaptadores REST
+  - Repositorios JPA
+  - Clientes de servicios externos
 
-Build Tool: Maven.
+---
 
-Containerization: Docker & Docker Compose.
+## 🛠️ Características Implementadas
 
-🏗️ Architectural Overview
+- **Gestión de Listados**
+  - Operaciones CRUD básicas para propiedades inmobiliarias.
+- **Patrón Circuit Breaker**
+  - Protección ante fallos de servicios externos.
+  - Servicio de tasación simulado con Resilience4j.
+- **Estrategia de Fallback Estático**
+  - Garantiza la continuidad operativa cuando servicios externos no están disponibles.
+  - Retorno de valores de negocio por defecto.
 
-The project follows Hexagonal Architecture principles to decouple business logic from infrastructure:
+---
 
-Domain Layer: Contains entities, value objects, and domain services.
+## 🗺️ Roadmap y Próximos Pasos (Planned)
 
-Application Layer: Orchestrates use cases and ports.
+El sistema se encuentra en evolución activa. Los siguientes módulos están en fase de planificación o desarrollo inicial:
 
-Infrastructure Layer: Implements adapters for REST controllers, JPA repositories, and external service clients.
+### 1. Observabilidad y Monitoreo 🔍
 
-🛠️ Key Features (Implemented)
+- **Micrometer Tracing**
+  - Trazabilidad distribuida entre servicios.
+- **Prometheus & Grafana**
+  - Dashboards en tiempo real:
+    - Salud del sistema
+    - Métricas del Circuit Breaker
 
-Listing Management: Basic CRUD operations for properties.
+### 2. Arquitectura Orientada a Eventos (EDA) 📨
 
-Circuit Breaker Pattern: Protection against external service failures (simulated Appraisal Service) using Resilience4j.
+- **Apache Kafka**
+  - Comunicación asíncrona para flujos no críticos:
+    - Emails de confirmación
+    - Logs de auditoría
+- **Transactional Outbox Pattern**
+  - Consistencia entre base de datos y eventos publicados.
 
-Static Fallback Strategy: Ensures the application remains functional even when external valuation services are down by providing default business values.
+### 3. Persistencia Avanzada 💾
 
-🗺️ Roadmap & Upcoming Features (WIP)
+- **Optimización JPA**
+  - Criteria API
+  - Specifications
+  - Resolución de problemas N+1 mediante Entity Graphs
+- **Migraciones de Base de Datos**
+  - Integración con Liquibase o Flyway
 
-We are actively evolving this system. The following modules are currently in the planning or early development phase:
+### 4. Calidad de Código (QA) 🧪
 
-1. Observability & Monitoring 🔍
+- **Tests Unitarios**
+  - JUnit 5
+  - Mockito
+  - Cobertura completa del dominio
+- **Tests de Integración**
+  - Testcontainers
+  - Validación con bases de datos reales
 
-Micrometer Tracing: Implementation of distributed tracing to track requests across services.
+### 5. Expansión de Negocio 📈
 
-Prometheus & Grafana: Dashboards for real-time monitoring of system health and Circuit Breaker states.
+- **Motor de Tasación Avanzado**
+  - Evolución hacia precios dinámicos
+  - Cálculo basado en:
+    - Ubicación
+    - Tendencias de mercado
+    - Variables históricas
 
-2. Event-Driven Architecture 📨
+---
 
-Apache Kafka Integration: Implementation of asynchronous communication for non-critical flows (e.g., sending confirmation emails or audit logs).
+## 🚦 Primeros Pasos
 
-Transactional Outbox Pattern: To ensure data consistency between the database and Kafka.
+### Requisitos
 
-3. Advanced Persistence 💾
+- JDK 21
+- Maven 3.9+
+- Docker & Docker Compose
 
-JPA Optimization: Implementing advanced query techniques (Criteria API, Specification) and resolving N+1 issues using Entity Graphs.
-
-Database Migrations: Integrating Liquibase or Flyway for version-controlled schema changes.
-
-4. Quality Assurance (Pending) 🧪
-
-Unit Testing: Comprehensive coverage of domain logic using JUnit 5 and Mockito.
-
-Integration Testing: Using Testcontainers to validate repository layers with real database instances.
-
-5. Business Logic Expansion 📈
-
-Complex Valuation Engine: Moving beyond simple CRUD to include dynamic pricing based on location and market trends.
-
-User Roles & Security: Implementing Spring Security with JWT for differentiated access (Agents vs. Clients).
-
-🚦 Getting Started
-
-Prerequisites
-
-JDK 21
-
-Maven 3.9+
-
-Docker & Docker Compose
-
-Running the App
-
-Clone the repository.
-
-Build the project:
-
-mvn clean install
-
-
-Spin up the infrastructure:
-
-docker-compose up -d
-
-
-Run the Spring Boot application.
